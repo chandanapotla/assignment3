@@ -1,1 +1,88 @@
-bh
+<html>
+<head>
+<style>
+table, th, td {
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+th, td {
+  padding: 15px;
+}
+</style>
+<script language="JavaScript" type="text/javascript">
+function ajax_post() {
+var xhttp = new XMLHttpRequest();
+var url="cart.php";
+ var a=document.getElementById("usb").value;
+ var b=document.getElementById("mouse").value;
+ var c=document.getElementById("keyboard").value;
+ var d=document.getElementById("lapi").value;
+var e=document.getElementById("n").value;
+var f=document.getElementById("gender").value;
+var adr=document.getElementById("address").value;
+var g=document.getElementById("phno").value;
+var h=document.getElementById("cod").value;
+ var query="usb="+a+"&mouse="+b+"&keyboard="+c+"&lapi="+d+"&n="+e+"&gender="+f+"&address="+adr+"&phno="+g+"&cod="+h;
+xhttp.open("POST",url, true);
+ xhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      document.getElementById("demo").innerHTML =this.responseText;
+    }
+  }
+  
+  xhttp.send(query);
+  document.getElementById("demo").innerHTML="processing";
+}
+</script>
+</head>
+<body>
+<form id="saveprivacy">
+<table style="width:100%">
+  <tr>
+    <th>Product</th>
+    <th>Unit Price</th> 
+    <th>Qrt</th>
+  </tr>
+  <tr>
+    <td>Usb Pendrive</td>
+    <td>300</td>
+    <td><input id="usb" name="usb"/></td>
+  </tr>
+  <tr>
+    <td>Wireless Mouse</td>
+    <td>200</td>
+    <td><input id="mouse" name="mouse"/></td>
+  </tr>
+  <tr>
+    <td>Keyboard</td>
+    <td>400</td>
+    <td><input id="keyboard" name="keyboard"/></td>
+  </tr>
+<tr>
+    <td>Laptop</td>
+    <td>33000</td>
+    <td><input id="lapi" name="lapi"/></td>
+  </tr>
+</table>
+Name:<input id="n" name="n"/><br>
+Phonenumber:<input id="phno" name="phno"/><br>
+Gender:<br>
+<input type="radio"id="gender" name="gender" value="male"> Male<br>
+<input type="radio" id="gender"name="gender" value="female"> Female<br>
+<input type="radio"id="gender" name="gender" value="other"> Other<br>
+Address:<input id="address" name="address"/>
+<br>
+Paymentoption:
+<input type="radio" id="cod" name="cod" value="CashOnDelivery"> CashOnDelivery<br>
+<input type="radio" id="cod" name="cod" value="internetBanking"> InternetBanking<br>
+<input type="radio" id="cod" name="cod" value="credit/Debit Card"/>Credit/Debit Card<br>  
+<input type="button" type="submit" value="Submit Data" onclick="javascript:ajax_post();"/>
+</form>
+<div id="demo">
+<h1>The XMLHttpRequest Object</h1>
+</div>
+</body>
+</html>
+
+
